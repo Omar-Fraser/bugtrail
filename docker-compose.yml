@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: bugtrail-postgres
+    environment:
+      POSTGRES_DB: bugtrail
+      POSTGRES_USER: bugtrail
+      POSTGRES_PASSWORD: bugtrail
+    ports:
+      - "5432:5432"
+    volumes:
+      - bugtrail-data:/var/lib/postgresql/data
+    healthcheck:
+      # Without this the app can start before Postgres is accepting connections
+      # and fail its first migration for no obvious reason.
+      test: ["CMD-SHELL", "pg_isready -U bugtrail -d bugtrail"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  bugtrail-data:
