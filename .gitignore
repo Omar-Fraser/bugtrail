@@ -48,3 +48,6 @@ src/main/resources/application-local.properties
 # --- Test and report output ---
 /reports/
 *.exec
+
+# Machine-specific Gradle config
+gradle.properties

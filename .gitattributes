@@ -1,0 +1,20 @@
+# Normalize line endings so Windows and Linux checkouts agree.
+# Without this, a file generated on one platform shows as fully modified on the
+# other -- every line "changed" because CR was added or removed.
+
+# Default: normalize to LF in the repository, convert on checkout per platform.
+* text=auto
+
+# Windows batch files must keep CRLF or cmd.exe can misparse them.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# The POSIX wrapper and shell scripts must stay LF, even on Windows.
+gradlew text eol=lf
+*.sh    text eol=lf
+
+# Binary -- never touch these.
+*.jar   binary
+*.png   binary
+*.jpg   binary
+*.pdf   binary
