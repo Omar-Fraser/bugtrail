@@ -79,6 +79,9 @@ class AppUserTest {
         AppUser sameUsername = new AppUser(
             "ofraser", "different@example.com", "Someone Else",
             "$2a$10$ADIFFERENTFAKEHASH00000", Role.ADMIN);
+        AppUser otherUsername = new AppUser(
+            "jsmith", "omar@example.com", "Omar Fraser",
+            "$2a$10$NOTAREALHASH0123456789", Role.DEVELOPER);
 
         assertThat(first).isEqualTo(sameUsername);
         assertThat(first).isNotEqualTo(otherUsername);
