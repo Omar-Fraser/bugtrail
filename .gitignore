@@ -21,8 +21,14 @@ replay_pid*
 out/
 
 # --- VS Code ---
-.vscode/
-!.vscode/settings.json.example
+# Shared workspace config IS committed: formatting rules and extension
+# recommendations must be identical for every contributor, or "it formats
+# differently on my machine" becomes a review comment. Note the glob is
+# .vscode/* not .vscode/ -- git will not descend into an ignored directory,
+# so a trailing-slash pattern makes the negations below unreachable.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # --- Eclipse ---
 .classpath

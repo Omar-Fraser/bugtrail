@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "vscjava.vscode-java-pack",
+    "vscjava.vscode-gradle"
+  ],
+
+  // These ship competing Java language servers. Running more than one at a
+  // time makes format-on-save and code actions fail silently -- the editor
+  // reports no error, the formatter simply never fires.
+  "unwantedRecommendations": [
+    "oracle.oracle-java",
+    "georgewfraser.vscode-javac",
+    "pleiades.java-extension-pack-jdk"
+  ]
+}

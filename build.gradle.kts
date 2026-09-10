@@ -63,7 +63,17 @@ dependencies {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    options.compilerArgs.add("-parameters")
+
+    // -parameters keeps parameter names in the class file, which is what lets
+    // Spring bind them by name instead of by position.
+    //
+    // -Xlint:all turns on every javac warning category. A formatter cannot see
+    // a raw type, a missing @Override, or a fall-through in a switch; the
+    // compiler can, and it is free. Not paired with -Werror yet: warnings from
+    // dependencies we do not control would fail the build for something we
+    // cannot fix, and a build that fails for reasons you must ignore is a build
+    // people stop reading.
+    options.compilerArgs.addAll(listOf("-parameters", "-Xlint:all"))
 }
 
 tasks.test {
